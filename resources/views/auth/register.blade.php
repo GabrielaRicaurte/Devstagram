@@ -1,52 +1,37 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('layouts.app')
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+@section('titulo')
+    Registrate en DevStagram
+@endsection
+
+@section('contenido')
+    <div class="md:flex">
+        <div class="md:w-1/2">
+            <p>Imagen Aqui</p>
         </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="md:w-1/2">
+            <form action="">
+                <div class="mb-5">
+                    <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">nombre</label>
+                    <input type="text" name="name" id="name" placeholder="Tu Nombre" class="border p-3 w-full rounded-lg">
+                </div>
+                <div class="mb-5">
+                    <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">username</label>
+                    <input type="text" name="username" id="username" placeholder="Tu Nombre de Usuario" class="border p-3 w-full rounded-lg">
+                </div>
+                <div class="mb-5">
+                    <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">email</label>
+                    <input type="email" name="email" id="email" placeholder="Tu Email de Registro" class="border p-3 w-full rounded-lg">
+                </div>
+                <div class="mb-5">
+                    <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">password</label>
+                    <input type="password" name="password" id="password" placeholder="Tu Password de Registro" class="border p-3 w-full rounded-lg">
+                </div>
+                <div class="mb-5">
+                    <label for="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold">repetir password</label>
+                    <input type="password" name="password_confimation" id="password_confirmation" placeholder="Repite tu Password" class="border p-3 w-full rounded-lg">
+                </div>
+            </form>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ml-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+@endsection

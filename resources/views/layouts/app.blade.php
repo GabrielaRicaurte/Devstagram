@@ -1,36 +1,36 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DevStagram - @yield('titulo')</title>
+    @vite('resources/css/app.css')
+</head>
+<body class="bg-gray-100">
+    <header class="p-5 border-b bg-white shadow">
+        <div class="container mx-auto flex justify-between intems-center">
+            <h1 class="text-3xl font-black">
+                DevStagram
+            </h1>
+            <nav class="flex gap-2 items-center">
+                <a class="font-bold uppercase text-gray-600 text-sm" href="">Login</a>
+                <a class="font-bold uppercase text-gray-600 text-sm" href="/crear-cuenta">Crear Cuenta</a>
+            </nav>
         </div>
-    </body>
+    </header>
+
+    <main class="container mx-auto mt-10">
+        <h2 class="font-black text-center text-3xl mb-10">
+            @yield('titulo')
+        </h2>
+        @yield('contenido')
+    </main>
+
+    <footer class="text-center p-5 text-gray-500 font-bold uppercase">
+        DevStagram - Todos los derechos Reservados {{ now()->year }}
+        {{-- now()->year imprime el año actual --}}
+    </footer>
+
+</body>
 </html>
